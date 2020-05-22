@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true});
+mongoose.connect('mongodb://admin_strator:strator_admin@localhost:27017/mern', { useNewUrlParser: true});
 var db = mongoose.connection;
 
 // Added check for DB connection
@@ -27,7 +27,7 @@ else
     console.log("Db connected successfully")
 
 // Setup server port
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8000;
 
 // Send message for default URL
 app.get('/', (req, res) => res.send('Hello World with Express'));

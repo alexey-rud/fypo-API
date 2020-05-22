@@ -13,9 +13,9 @@ var outfitController = require('./outfitController');
 router.route('/outfits')
     .get(outfitController.index)
     .post(outfitController.new);
-router.route('/outfits/:outfits_id')
+router.route('/outfits/:outfit_id')
     .get(outfitController.view)
-    .patch(outfitController.update)
+    .patch(outfitController.update) 
     .put(outfitController.update)
     .delete(outfitController.delete);
 // Export API routes
