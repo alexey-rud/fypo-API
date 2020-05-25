@@ -19,8 +19,10 @@ exports.index = function (req, res) {
 // Handle create outfit actions
 exports.new = function (req, res) {
     var outfit = new Outfit();
-    outfit.body_type = req.body.body_type ? req.body.body_type : outfit.body_type;
+    outfit.body_type = req.body.body_type; // ? req.body.body_type : outfit.body_type;
     outfit.photo_url = req.body.photo_url;
+    outfit.url_tienda = req.body.url_tienda;
+    outfit.id_usuario = req.body.id_usuario;
 // save the outfit and check for errors
     outfit.save(function (err) {
         // if (err)
@@ -37,6 +39,7 @@ exports.view = function (req, res) {
         if (err)
             res.send(err);
         res.json({
+            message: 'outfit details loading..',
             data: outfit
         });
     });
@@ -47,9 +50,10 @@ exports.update = function (req, res) {
 Outfit.findById(req.params.outfit_id, function (err, outfit) {
         if (err)
             res.send(err);
-Outfit.body_type = req.body.body_type ? req.body.body_type : outfit.body_type;
+        outfit.body_type = req.body.body_type; //? req.body.body_type : outfit.body_type;
         outfit.photo_url = req.body.photo_url;
-
+        outfit.url_tienda = req.body.url_tienda;
+        outfit.id_usuario = req.body.id_usuario;
 // save the outfit and check for errors
         outfit.save(function (err) {
             if (err)
@@ -74,3 +78,5 @@ res.json({
         });
     });
 };
+
+

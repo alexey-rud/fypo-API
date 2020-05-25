@@ -12,7 +12,16 @@ var outfitSchema = mongoose.Schema({
     create_date: {
         type: Date,
         default: Date.now
+    },
+    url_tienda: {
+        type: String,
+        required: true
+    },
+    id_usuario: {
+        type: String,
+        required: true
     }
+
 });
 // Export Contact model
 var Outfit = module.exports = mongoose.model('outfit', outfitSchema);

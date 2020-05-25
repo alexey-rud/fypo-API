@@ -18,5 +18,7 @@ router.route('/outfits/:outfit_id')
     .patch(outfitController.update) 
     .put(outfitController.update)
     .delete(outfitController.delete);
+router.route('/outfits/:body_shape')
+    .get(outfitController.viewByBodyShape)
 // Export API routes
 module.exports = router;
