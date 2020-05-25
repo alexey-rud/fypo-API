@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://admin_strator:strator_admin@localhost:27017/mern', { useNewUrlParser: true});
+mongoose.connect('mongodb://admin_strator:strator_admin@localhost:27017/mern', { useUnifiedTopology: true });
 var db = mongoose.connection;
 
 // Added check for DB connection
@@ -36,5 +36,5 @@ app.get('/', (req, res) => res.send('Hello World with Express'));
 app.use('/api', apiRoutes);
 // Launch app to listen to specified port
 app.listen(port, function () {
-    console.log("Running RestHub on port " + port);
+    console.log("Running FYPO API on port " + port);
 });

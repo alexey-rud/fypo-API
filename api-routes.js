@@ -3,22 +3,34 @@ let router = require('express').Router();
 // Set default API response
 router.get('/', function (req, res) {
     res.json({
-        status: 'API Its Working',
-        message: 'Welcome to RESTHub crafted with love!',
+        status: 'API is Working',
+        message: 'Welcome to FYPO API',
     });
 });
-// Import contact controller
+
+// Import outfit and user controller
 var outfitController = require('./outfitController');
-// Contact routes
+var userController = require('./userController');
+
+// Outfit's routes
 router.route('/outfits')
     .get(outfitController.index)
     .post(outfitController.new);
 router.route('/outfits/:outfit_id')
     .get(outfitController.view)
-    .patch(outfitController.update) 
+    .patch(outfitController.update)
     .put(outfitController.update)
     .delete(outfitController.delete);
-router.route('/outfits/:body_shape')
-    .get(outfitController.viewByBodyShape)
+
+    // User's routes
+router.route('/users')
+    .get(userController.index)
+    .post(userController.new);
+router.route('/users/:user_id')
+    .get(userController.view)
+    .patch(userController.update)
+    .put(userController.update)
+    .delete(userController.delete);
+
 // Export API routes
 module.exports = router;
