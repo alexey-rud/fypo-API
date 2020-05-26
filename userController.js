@@ -14,6 +14,7 @@ exports.index = function (req, res) {
         });
     });
 };
+
 // Handle create user actions
 exports.new = function (req, res) {
     var user = new User();
@@ -48,10 +49,10 @@ exports.update = function (req, res) {
     User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
-        user.user_name = req.body.user_name; 
-        user.user_pwd = req.body.user_pwd;
-        user.email = req.body.email;
-        user.url_foto = req.body.url_foto;
+        user.user_name = req.body.user_name ? req.body.user_name : user.user_name;
+        user.user_pwd = req.body.user_pwd ? req.body.user_pwd : user.user_pwd;
+        user.email = req.body.email ? req.body.email : user.email;
+        user.url_foto = req.body.url_foto ? req.body.url_foto : user.url_foto;
 // save the user and check for errors
         user.save(function (err) {
             if (err)
@@ -76,6 +77,7 @@ res.json({
         });
     });
 };
+
 
 /*
 // Select users by "body_shape" field

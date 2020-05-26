@@ -50,10 +50,10 @@ exports.update = function (req, res) {
 Outfit.findById(req.params.outfit_id, function (err, outfit) {
         if (err)
             res.send(err);
-        outfit.body_type = req.body.body_type; //? req.body.body_type : outfit.body_type;
-        outfit.photo_url = req.body.photo_url;
-        outfit.url_tienda = req.body.url_tienda;
-        outfit.id_usuario = req.body.id_usuario;
+        outfit.body_type = req.body.body_type ? req.body.body_type : outfit.body_type;
+        outfit.photo_url = req.body.photo_url ? req.body.photo_url : outfit.photo_url;
+        outfit.url_tienda = req.body.url_tienda ? req.body.url_tienda : outfit.url_tienda;
+        outfit.id_usuario = req.body.id_usuario ? req.body.id_usuario : outfit.id_usuario;
 // save the outfit and check for errors
         outfit.save(function (err) {
             if (err)
