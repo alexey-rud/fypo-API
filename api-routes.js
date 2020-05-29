@@ -11,6 +11,7 @@ router.get('/', function (req, res) {
 // Import outfit and user controller
 var outfitController = require('./outfitController');
 var userController = require('./userController');
+var likeController = require('./likeController');
 
 // Outfit's routes
 router.route('/outfits')
@@ -22,7 +23,7 @@ router.route('/outfits/:outfit_id')
     .put(outfitController.update)
     .delete(outfitController.delete);
 
-    // User's routes
+// User's routes
 router.route('/users')
     .get(userController.index)
     .post(userController.new);
@@ -31,6 +32,18 @@ router.route('/users/:user_id')
     .patch(userController.update)
     .put(userController.update)
     .delete(userController.delete);
+
+// Like's routes
+router.route('/likes')
+    .get(likeController.index)
+    .post(likeController.new);
+router.route('/likes/:like_id')
+    .get(likeController.view)
+    .patch(likeController.update)
+    .put(likeController.update)
+    .delete(likeController.delete);
+
+
 
 // Export API routes
 module.exports = router;
