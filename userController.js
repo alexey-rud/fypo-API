@@ -32,6 +32,7 @@ res.json({
         });
     });
 };
+
 // Handle view user info
 exports.view = function (req, res) {
     User.findById(req.params.user_id, function (err, user) {

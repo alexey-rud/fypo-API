@@ -6,9 +6,8 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 // Initialise the app
 let app = express();
-
-//require('dotenv/config');
-
+// DB url with password
+require("./.env");
 // Import routes
 let apiRoutes = require("./api-routes");
 // Configure bodyparser to handle post requests
@@ -17,7 +16,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://admin_strator:strator_admin@localhost:27017/mern', { useUnifiedTopology: true });
+mongoose.connect(DB_CONNECTION, { useUnifiedTopology: true });
 var db = mongoose.connection;
 
 // Added check for DB connection
